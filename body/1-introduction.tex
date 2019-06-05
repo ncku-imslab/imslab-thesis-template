@@ -1,3 +1,113 @@
 \hspace{24pt}
 
 Add your introduction here.
+
+\section{Mathematic Symbols}
+% *** mathematic symbols (use dollar sign to wrap it)***
+$C_t$ example of sub
+$C^t$ example of power
+% more symbols in latex : https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols
+
+\section{Equation}
+% *** example of equation ***
+Below is equation~\ref{eq:example}.
+\begin{eqnarray}
+        C_t=\{x|x \in P \wedge D(t,x) \leq \delta \wedge A(x) > 0 \}.
+        \label{eq:example}
+\end{eqnarray}
+% more about equation in latex :  https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics
+
+\section{Step lists}
+\begin{description}
+    \item [Step 1.] balabala
+    \item [Step 2.] balabala
+\end{description}
+
+\section{Algorithm}
+% *** example of algorithm ***
+% require \usepackage{algorithm}
+We proposed algorithm ~\ref{algorithm:example}.
+
+\begin{algorithm}[H]
+    \caption{Algorithm Example}
+    \label{algorithm:example}
+    
+    \begin{algorithmic}
+        \If {$i\geq maxval$}
+            \State $i\gets 0$
+        \Else
+            \If {$i+k\leq maxval$}
+                \State $i\gets i+k$
+            \EndIf
+        \EndIf
+    \end{algorithmic}
+\end{algorithm} 
+% more about algorithm in latex : https://en.wikibooks.org/wiki/LaTeX/Algorithms (Typesetting using the algorithmicx package)
+% http://ftp.yzu.edu.tw/CTAN/macros/latex/contrib/algorithms/algorithms.pdf
+
+\section{Label} \label{subsec: labelName}
+This is Section~\ref{subsec: labelName}.
+
+\section{Reference}
+Professor Tsai published many good papers~\cite{TsaimhPaper}.
+
+\section{Subsection}
+\subsection{one}
+
+
+\section{Table}
+% *** Table ***
+Table~\ref{tab:example} is a 3 x 3 table.
+\begin{table}[h] 
+    \normalsize
+    \caption{Table Example} 
+    \begin{center} 
+        \label{tab:example} 
+        \begin{tabular}{ | l | c || r |}
+            % use | to draw the vertical line
+            % use \hline to draw horizontal line
+            \hline
+            1 & 2 & 3 \\ \hline\hline
+            4 & 5 & 6 \\ \hline
+            7 & 8 & 9 \\ 
+            \hline
+        \end{tabular} 
+    \end{center} 
+\end{table}
+% more about table in latex :  https://en.wikibooks.org/wiki/LaTeX/Tables
+
+\section{Figure}
+% *** figure ***
+Figure~\ref{fig:example} is flowchart.
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=3.4in]{images/logo.png}
+    \end{center}
+    \caption{Figure Example}
+    \label{fig:example}
+\end{figure}
+
+\section{Plot}
+% *** plot ***
+The results show in Figure~\ref{fig:plot-example}
+\begin{figure}[tbp]
+    \begin{tikzpicture}
+        \begin{axis}[
+            width = \textwidth,
+            xlabel = {x label},
+            ylabel = {y label},
+            % scaled y ticks={base 10:2}, 
+            legend pos = south east,
+            legend style = {font=\tiny},
+        ]
+            % line 1
+            \addplot+[draw = black, mark = *, mark options = {scale=1, fill=white}] table {data/line1.dat};
+            % line 2 
+            \addplot+[draw = black, mark = square*, mark options = {scale=1, fill=white}] table {data/line2.dat};
+            \legend{line1, line2}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Plot Example}
+    \label{fig:plot-example}
+\end{figure}
+% 
