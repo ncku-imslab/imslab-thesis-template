@@ -1,0 +1,254 @@
+% %
+% This file is encoded in utf-8
+% This file is modified from
+% 1. http://exciton.eo.yzu.edu.tw/~lab/latex/latex_note.html
+%    (元智大學模版 陳念波老師)
+% 2. http://code.google.com/p/ntuthesis/
+%    (臺大碩士、博士論文的Latex模板)
+%%
+\documentclass[12pt,p a4paper]{class/ncku_class}
+
+\usepackage{CJKutf8}  %%% ZZZ %%% macro for Chinese/Japanese/Korean processing
+\usepackage{CJKnumb} %%% ZZZ %%% for Chinese numbering capability
+\usepackage[nospace]{cite}  % for smart citation
+\usepackage{geometry}  % for easy margin settings
+\usepackage{class/ncku_style} % 自定義nckuee.sty // cbj
+\usepackage{booktabs}
+
+% 插圖套件 graphicx
+% 使用者工作流程是用 pdftex 還是 latex + dvipdfmx?
+% 視情況而有不同的參數
+% 這裡作自動判斷
+% 參考自
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=ifpdf
+%%\newcommand\mydvipdfmxflow{dvipdfmx}P
+%%\newcommand\mypdftexflow{pdftex}P
+%%\ifx\pdfoutput\undefined
+%%  % not running pdftex
+%%  \usepackage[dvipdfm]{graphicx}
+%%  \newcommand\myworkflow{dvipdfmx}  % set the flag for hyperref
+%%\else
+%%  \ifx\pdfoutput\relax
+%%    % not running pdftex
+%%    \usepackage[dvipdfm]{graphicx}
+%%    \newcommand\myworkflow{dvipdfmx}  % set the flag
+%%  \else
+%%    % running pdftex, with...
+%%    \ifnum\pdfoutput>0
+%%      % ... PDF output
+%%      \usepackage[pdftex]{graphicx}
+%%      \newcommand\myworkflow{pdftex}  % set the flag
+%%    \else
+%%      %...DVI output
+%%      \usepackage[dvipdfm]{graphicx}
+%%      \newcommand\myworkflow{dvipdfmx}  % set the flag
+%%    \fi
+%%  \fi
+%%\fi
+      \usepackage[pdftex]{graphicx}
+      \newcommand\myworkflow{pdftex}  % set the flag
+
+% 增強功能型頁楣 / 頁腳套件
+\usepackage{fancyhdr}  % 借用此套件來擺放浮水印
+% (佔用了 central header)
+% 不需要浮水印的使用者仍可利用此套件，產生所需的 header, footer
+%
+% 啟動 fancy header/footer 套件
+\pagestyle{fancy}
+\fancyhead{}  % reset left, central, right header to empty
+\fancyfoot[C]{\thepage} %中間 footer 擺放頁碼
+\renewcommand{\headrulewidth}{0pt} % header 的直線; 0pt 則無線
+
+% 如果不需要任何浮水印，則請把下列介於 >>> 與 <<< 之間
+% 的文字行關掉 (行首加上百分號)
+%% 浮水印 >>>
+\input{header/ncku_watermark.tex}
+%% <<< 浮水印
+% 如需額外的頁楣 (header) 或 footer，請在 header/header_footer.tex 裡依例修改
+% 它的預設內容是都關掉，可依需要打開
+\input{header/header_footer.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 非必要的套件，但很實用
+\usepackage{amsmath} % 各式 AMS 數學功能
+\usepackage{amssymb} % 各式 AMS 數學符號
+\usepackage{mathrsfs} %草寫體數學符號，在數學模式裡用 \mathscr{E} 得草寫 E
+\usepackage{listings} % 程式列表套件
+
+%%%%%%%%%%%%%%
+% // 可自行增加所需套件 // cbj
+%\usepackage{subfig}
+%%%%%%%%%%%%%%
+\usepackage{subfigure}
+\usepackage{graphicx} \graphicspath{{images/}}
+\usepackage{psfrag} % text replacement in figure
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\hypersetup{
+colorlinks,%
+citecolor=blue,%
+filecolor=blue,%
+linkcolor=blue,%
+urlcolor=blue%
+}
+%%\usepackage{url}
+%\usepackage{rotating} % table rotation
+%\usepackage{amssymb}
+\usepackage{array}
+\usepackage{threeparttable} % table note
+\usepackage{multirow} % newline on the tabular of a table.
+%%%%%%%%%%%%%%
+%---
+\usepackage{tabularx}
+\usepackage{url}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{pgf}
+\usepackage{tikz}
+% \usetikzlibrary{arrows,automata,positioning}
+\usetikzlibrary{arrows,shapes}
+%
+% listing setting
+\lstset{
+breaklines=true,% 過長的程式行可斷行
+extendedchars=false,% 中文處理不需要 extendedchars
+texcl=true,% 中文註解需要有 TeX 處理過的 comment line, 所以設成 true
+comment=[l]\%\%,% 以雙「百分號」做為程式中文註解的起頭標記，配合 MATLAB
+basicstyle=\small,% 小號字體, 約 10 pt 大小
+commentstyle=\upshape,% 預設是斜體字，會影響註解裏的英文，改用正體
+%language=Octave % 會將一些 octave 指令以粗體顯示
+}
+
+\usepackage{url} % 在文稿中引用網址，可以用 \url{http://www.yzu.edu.tw} 方式
+
+%%%% 以上為非必要套件
+%%%%%%%%%%%p%%%%%%%%%%%%%%%%%%%
+
+%%% 以下是 hyperref 套件
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% hyperref 會擾亂 cite.sty 對文獻號碼縮編的排版，所以依據
+% http://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/
+% 作如下的更動，使得 hyperref 不做文獻號碼的超連結。
+\makeatletter
+\def\NAT@parse{\typeout{This is a fake Natbib command to fool Hyperref.}}
+\makeatother
+
+% hyperlinkable table of contents
+% 章節目錄、圖表超連結
+%%\ifx\myworkflow\mydvipdfmxflow
+%%	\usepackage[dvipdfmx, debug, colorlinks, linkcolor=black, citecolor=black, urlcolor=black, unicode]{hyperref}
+%%\else
+%%	\usepackage[pdftex, debug, colorlinks, linkcolor=black, citecolor=black, urlcolor=black, unicode]{hyperref}	
+%%\fi
+%自定義
+\usepackage{hyperref}
+\hypersetup{colorlinks, citecolor=blue,filecolor=blue,linkcolor=blue,urlcolor=blue}
+
+% if hyperref is not used (e.g., in LyX application)
+% define dummy \phantomsection for those occurences
+%   in yzu_frontpages.tex, yzu_backpages.tex, my_appendix.tex
+%%\ifx\hypersetup\undefined
+%%	\newcommand\phantomsection{}
+%%\fi
+% hyperref跟algorithm衝突，hyperref必須放在algorithm前面
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{enumerate}
+%\usepackage{subfig}
+%%%% 以上為所有套件
+%%%%
+%%%%
+
+
+%% global page layout
+%\newcommand{\mybaselinestretch}{1.5}  %行距 1.5 倍 + 20%, (約為 double space)
+%\renewcommand{\bapselinestrpetch}{\mybapselinestretch}  % 論文行距預設值
+%\parskip=2ex  % 段落之間的間隔為兩個 x 的高度
+%\parindent = 0Pt  % 段首內縮由 CJpK 控制，所以這裡就設成不內縮
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  end of preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Thesis Information // cbj (在frontpage資料夾內ncku_thesis_cover 設定)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\renewcommand{\enTitle}{An Edge Enhancement Algorithm for Upscaled Images}  % 英文標題
+%%\renewcommand{\zhTitle}{針對放大後影像之邊緣增強演算法}  %中文標題
+%%\renewcommand{\authorZhName}{陳宏哲}  %作者中文姓名
+%%\renewcommand{\authorEnName}{Hong-Jhe Chen}  %作者英文姓名
+%%%\renewcommand{\authorStudentID}{Q36991097}  %作者學號
+%%\renewcommand{\advisorZhName}{戴顯權}  %指導教授中文姓名
+%%\renewcommand{\advisorEnName}{Shen-Chuan Tai}  %指導教授英文姓名
+%%\renewcommand{\zhUniv}{國立成功大學}
+%%\renewcommand{\enUniv}{National Cheng Kung University}
+%%%\renewcommand{\zhCollegeName}{電機資訊學院}  %學院中文名稱
+%%%\renewcommand{\enCollegeName}{College of Electrical Enginnering and Computer Science}  % 學院英文名稱
+%%\renewcommand{\zhDepartmentName}{電腦與通信工程研究所}  %系所中文名稱
+%%\renewcommand{\enDepartmentName}{Institute of Computer and Communication Engineering Department of Electrical Engineering}  % 系所英文名稱
+%%\renewcommand{\rocYear}{一〇一}  %中華民國紀年年份
+%%\renewcommand{\zhMonth}{六}  %中文月份
+%%\renewcommand{\enYear}{2012}  %公元紀年
+%%\renewcommand{\enMonth}{June}  %英文月份
+%%\renewcommand{\oralDate}{101 年 6 月 19 日}  %口試日期
+
+%
+\begin{document}
+\begin{CJK}{UTF8}{bkai}   %%% ZZZ %%%  <<< 在這裡更改預設中文字型、編碼 // 設定標楷體字型 // cbj
+% 編碼：UTF8, Bg5, ...
+% 中文字型名稱：TeXLive 安裝有一套明體字 bsmi, 楷書與其他字型視你的 LaTeX CJK 系統裝設情況而定
+
+% 針對 latex + dvipdfmx 工作流程在 hyperref 套件的影響下，圖檔的辨識力退化
+% 所作的權宜措施。可能是因為 TeXLive2007 hyperref 裏的
+% 客製 graphicx / dvipdfmx 的設定檔不夠新
+\ifx\myworkflow\mydvipdfmxflow
+	\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
+	\DeclareGraphicsRule{.pdf}{eps}{.bb}{}
+	\DeclareGraphicsRule{.png}{eps}{.bb}{}
+	\DeclareGraphicsRule{.jpg}{eps}{.bb}{}
+\fi
+
+% global CJK setting
+\CJKindent  %%% ZZZ %%%  段首內縮兩格
+
+% 載入中文名詞的定義：例如，Figure -->「圖」, Chapter -->「第 x 章」
+\input{header/ncku_definitions.tex} % 主標題名稱定義 // 摘要 (Abstract), ... 等 // cbj
+
+% 如果不需要以中文數字一、二、三呈現章別，例如「第一章」
+% 則請把下列介於 >>> 與 <<< 之間
+% 的文字行關掉 (行首加上百分號), 會以「第 1 章」呈現
+%% 中文數字章別 >>>
+%\input{yzu_chnum.tex}
+%% <<< 中文數字章別
+
+%%% 以下是載入前頁、本文、後頁
+%====================
+%  Front Pages // cbj
+%  1. 封面頁 2. 口委中英文簽名單 3. 誌謝 4. 中英文摘要
+%  5. 論文目錄 6. 圖表目錄 7. 符號說明
+%  1&2定義於nckuee.sty ; 3&4&7放置在資料夾 frontpages\目錄下)
+%====================
+\input{frontpages/ncku_frontpages.tex}
+%====================
+%  Main Pages // cbj
+%====================
+% 本文
+\input{body/main.tex}
+%====================
+%  Back Pages // cbj
+%  1. 參考文獻 2. 附錄 3. 作者簡歷
+%====================
+%%% 參考文獻
+\input{back/back_reference.tex}
+%%% 附錄
+%\input{back/back_appendix.tex}
+%%% 自傳
+%\input{back/back_vita.tex}
+
+\clearpage % to make sure all CJK characters are processed
+\end{CJK}  %%% ZZZ %%%
+\end{document}
+

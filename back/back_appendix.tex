@@ -1,0 +1,29 @@
+%
+% this file is encoded in utf-8
+% v2.0 (Apr. 5, 2009)
+%%% 每一個附錄 (附錄甲、附錄乙、...) 都要複製此段附錄編排碼做為起頭
+%%% 附錄編排碼 begin >>>
+\newpage
+\chapter*{Appendix A: MATLAB / Octave } % 修改附錄編號與你的附錄名
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{Appendix A: MATLAB / Octave} %建議此內容應與上行相同
+%\setcounter{chapter}{0}  %如果用的是 TeXLive2007 則打開此行以避免錯誤
+\setcounter{equation}{0} 
+\setcounter{figure}{0} 
+\setcounter{footnote}{0} 
+\setcounter{section}{0} 
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{table}{0} 
+\renewcommand{\thechapter}{A} % 如果是附錄乙，則內容應為{乙}
+%%% <<< 附錄編排碼 end
+
+% 附錄內容開始
+% 納入程式源碼
+%\lstinputlisting{example_prog_list.m}
+
+
+\begin{equation}\sum_{k=1}^{n} k = \frac{n(n+1)}{2}\end{equation}
+
+%%% 如果有附錄乙、丙、...，則在此繼續加上「附錄編排」碼
+% 每一個附錄會自動以新頁開始

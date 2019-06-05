@@ -1,0 +1,267 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{ncku_style}[2011/10/15 v1.0 NCKU Format]
+\usepackage{geometry}
+%\usepackage{times}
+\usepackage{type1cm}
+%\RequirePackage{CJKfntef} % // HongJhe
+
+% margins setting // NCKU內頁設定 // cbj
+\geometry{verbose,a4paper,tmargin=2.3cm,bmargin=3cm,lmargin=2.5cm,rmargin=3cm}
+\usepackage[bottom]{footmisc}
+
+
+%
+
+\newcommand{\enThesisType}{Master}
+\newcommand{\zhThesisType}{碩士}
+% \newcommand{\zhDraftName}{(初稿)}
+
+\DeclareOption{master}{\renewcommand{\enThesisType}{Master Thesis} \renewcommand{\zhThesisType}{碩士}}
+%\DeclareOption{phd}{\renewcommand{\enThesisType}{Doctor of Philosophy} \renewcommand{\zhThesisType}{博士}}
+% \DeclareOption{draft}{\renewcommand{\zhDraftName}{ (初稿) }}
+
+\newcommand{\zhKaiFont}{\CJKfamily{bkai}}  %設定中文楷體字型
+\newcommand{\zhMingFont}{\CJKfamily{bsmi}}  %設定中文明體字型
+
+\newcommand{\mybaselinestretch}{2}  %行距 1.5 倍 + 20%, (約為 double space
+\renewcommand{\baselinestretch}{\mybaselinestretch}  % 論文行距預設值
+
+\newcommand{\mysinglespacing}{\renewcommand{\baselinestretch}{1.18}}
+\newcommand{\myonehalfspacing}{\renewcommand{\baselinestretch}{1.5}}
+\newcommand{\mydoublespacing}{\renewcommand{\baselinestretch}{2}}
+
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+\renewcommand{\bibname}{References}
+
+\newcommand{\zhUniv}{國立成功大學}
+\newcommand{\enUniv}{National Cheng Kung University}
+\newcommand{\enCity}{Tainan, Taiwan, R.O.C.}
+\newcommand{\zhCollegeName}{電機資訊學院}
+\newcommand{\zhDepartmentName}{資訊工程學系}
+\newcommand{\enDepartmentName}{Institute of Computer Science and Information Engineering}
+\newcommand{\enTitle}{IMSLab Thesis Template} %英文標題
+\newcommand{\zhTitle}{智慧化行動服務實驗室論文模板} %中文標題
+\newcommand{\authorZhName}{瞿旭民}  %作者中文姓名
+\newcommand{\authorEnName}{Syu-Min Cyu}  %作者英文姓名
+\newcommand{\authorStudentID}{P76064570}  %作者學號
+\newcommand{\advisorZhName}{蔡孟勳}%指導教授中文姓名
+\newcommand{\advisorEnName}{Meng-Hsun Tsai}  %指導教授英文姓名
+\newcommand{\rocYear}{一零八}  %中華民國紀年年份
+\newcommand{\zhMonth}{七}  %中文月份
+\newcommand{\enYear}{2019}  %公元紀年
+\newcommand{\enMonth}{July}  %英文月份
+\newcommand{\enDay}{25}  %英文日
+\newcommand{\oralDate}{108年7月25日}  %口試日期
+
+% % % % % % % % % % % % % %
+% // HongJhe // ver.0626
+% // 封面頁設定 //
+% % % % % % % % % % % % % %
+\newcommand{\nckuEEtitlepage}{
+\begin{titlepage}%
+\begin{center}
+%	\myonehalfspacing
+\vspace{2cm}
+\zhKaiFont
+\centering
+	{
+%         \Large
+ 		\fontsize{24}{16}\selectfont
+		\bfseries
+%		\begin{CJKfilltwosides}{15.5cm}
+%		\zhUniv{} \\
+%		\zhDepartmentName{} \\
+%		\zhThesisType{} 論文 \\
+%		\end{CJKfilltwosides}
+% 		{國\hfill 立\hfill 成\hfill 功\hfill 大\hfill 學}\\
+% 		{資\hfill 訊\hfill 工\hfill 程\hfill 研\hfill 究\hfill 所}\\
+% 		{碩\hfill 士\hfill 論\hfill 文}\\
+		{國 立 成 功 大 學}\\
+		{資 訊 工 程 研 究 所}\\
+		{碩 士 論 文}\\
+   %     {(初 稿)}\\
+	}
+
+%		\centering
+%		{%\Large
+%		\fontsize{24}{20}\selectfont
+%		%\bfseries
+%		\zhDraftName
+%		}
+		\vspace{2em}
+		\vfill
+%		\vspace{1em}\vfill
+		{\par%\vfill	
+%			{\fontsize{24}{16}\selectfont\bfseries \begin{CJKfilltwosides}{15cm}\zhTitle\end{CJKfilltwosides} \\} % // 論文題目
+			{\fontsize{24}{16}\selectfont\bfseries \zhTitle \\} % // 論文題目 // cbj
+%			\myonehalfspacing
+			\vspace{0.5cm}
+%			\vfill
+            {\fontsize{20}{16}\selectfont\bfseries \enTitle \\} % // Thesis Title // cbj
+		\vfill
+		%\myonehalfspacing
+		{\fontsize{18}{14}\selectfont
+					研 究 生\hspace{2pt}：\authorZhName{} \hspace{2em} Student : \authorEnName \\
+					指導教授：\advisorZhName{} \hspace{2em} \hspace{1pt}Advisor : \advisorEnName \\
+%					\vspace{2em}
+		}
+		{%\large
+		\vfill
+		\fontsize{18pt}{12pt}\selectfont
+		\enDepartmentName{}, \\
+		%\enCollegeName{}
+		\enUniv, \\
+		\enCity \\
+		Thesis for Master of Science Degree \\ \enMonth , \enYear \\}
+		\vfill
+%		\vspace{2em}
+		\fontsize{24pt}{20pt}\selectfont	
+		中華民國\rocYear 年\zhMonth 月
+		}\par
+	\end{center}
+\end{titlepage}
+}
+
+% % % % % % % % % % % % % %
+% // 中文摘要設定 // cbj
+% % % % % % % % % % % % % %
+\newenvironment{zhAbstract}
+{\newpage
+ \begin{center}
+	\LARGE \zhKaiFont \nameCabstract
+ \end{center}
+ \addcontentsline{toc}{chapter}{\nameCabstract}
+ \vspace{12pt}
+ \par\CJKindent
+}{}
+
+% % % % % % % % % % % % % %
+% // 英文摘要設定 // cbj
+% % % % % % % % % % % % % %
+\newenvironment{enAbstract}
+{\newpage
+ \begin{center}
+	\LARGE \nameEabstractc %
+ \end{center}
+ \addcontentsline{toc}{chapter}{\nameEabstractc}
+ \vspace{12pt}
+ %\par
+ %\noindent % // 無縮排 // cbj
+}{}
+
+% % % % % % % % % % % % % %
+% // 誌謝設定 // cbj
+% % % % % % % % % % % % % %
+\newenvironment{zhAckn}
+{\newpage
+ \begin{center}
+	\LARGE \zhKaiFont \bfseries \nameAcknc
+ \end{center}
+ \addcontentsline{toc}{chapter}{\nameAcknc}
+ \vspace{12pt}\par
+ \CJKindent % // 段落縮排
+}{}
+
+
+
+
+
+% // 中文審查簽名單 // cbj
+\newcommand{\nckuEEoralpage}{\newpage\begin{titlepage}% "titlepage"拿掉則會顯示頁碼 // cbj
+% \addcontentsline{toc}{chapter}{口試委員會審定書} %// 如需要加入目錄自行打開 // cbj
+\vspace{1cm}
+\begin{center}
+	%\mysinglespacing\selectfont
+		\fontsize{24pt}{20pt}\selectfont\zhKaiFont
+	\textbf{ \zhUniv \zhDepartmentName{}\\\zhThesisType{}學位論文} \\
+	    \vspace{20pt}
+	\textbf {%\LARGE
+	\fontsize{20pt}{16pt}\selectfont
+	\zhTitle \\}
+	\vspace{12pt}
+\end{center}
+\begin{center}
+{%\mysinglespacing\selectfont
+\fontsize{20pt}{16pt}\selectfont \zhKaiFont
+\CJKindent {研究生：\authorZhName \\ 本論文業經審查及口試合格特此證明}\\
+}
+\end{center}
+\par \vspace{3em}
+
+{\mysinglespacing\selectfont
+\fontsize{18pt}{14pt}\selectfont \zhKaiFont
+
+論文考試委員：
+\vfill
+\underline{\hspace{11em}} \hspace{1em} \underline{\hspace{11em}}
+\vfill
+
+\underline{\hspace{11em}} \hspace{1em} \underline{\hspace{11em}}
+\vfill
+\begin{center}
+{
+指導教授：\underline{\hspace{13em}} 	
+\vfill
+所　　長：\underline{\hspace{13em}}
+\vspace{2em}
+}
+\end{center}
+\vfill\vspace{20pt}
+\begin{center}
+\fontsize{18pt}{14pt}\selectfont	
+中華民國 \hspace{2em} 年 \hspace{2em} 月 \hspace{2em} 日
+\end{center}
+\vspace*{20pt}
+}
+\end{titlepage}%
+}
+
+% // 英文審查簽名單 // cbj
+\newcommand{\nckuEEenoralpage}{
+    \newpage
+    \begin{titlepage} % "titlepage"拿掉則會顯示頁碼 // cbj
+    \thispagestyle{EmptyWaterMarkPage}
+%\addcontentsline{toc}{chapter}{enOralpage} %// 如需要加入目錄自行打開 // cbj
+\vspace{1cm}
+\begin{center}
+    \textbf {\fontsize{20pt}{16pt}\selectfont
+    \enTitle{} \\}
+    {\fontsize{20pt}{16pt}\selectfont
+    by \\ \authorEnName{}\\
+    }
+    \vspace{2em}
+    {\fontsize{18pt}{14pt}\selectfont
+        A thesis submitted to the graduate division in partial fulfillment of the requirement for the degree of \enThesisType{} of \enDepartmentName{}
+    }
+    \vspace{2em}
+    {\fontsize{18pt}{14pt}\selectfont
+        \enUniv \\ \enDay\ \enMonth\ \enYear \\
+    }
+\end{center}
+\par \vspace{3em}
+{\mysinglespacing\selectfont
+\fontsize{18pt}{14pt}\selectfont \zhKaiFont
+Approved by:
+\vfill
+\underline{\hspace{11em}} \hspace{1em} \underline{\hspace{11em}}
+\vfill
+
+\underline{\hspace{11em}} \hspace{1em} \underline{\hspace{11em}}
+\vfill
+
+\underline{\hspace{11em}}
+\vfill
+
+\begin{center}
+Advisor: \underline{\hspace{13em}}
+\vfill
+Chairman: \underline{\hspace{13em}}
+\end{center}
+\vspace*{20pt}
+}
+\end{titlepage}%
+}
+
+\ExecuteOptions{phd}
+\ProcessOptions*

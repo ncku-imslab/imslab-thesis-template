@@ -1,0 +1,227 @@
+%% // nckuee.sty 定義 // cbj
+
+% 產生論文封面
+\nckuEEtitlepage
+% 產生口試委員會簽名單
+%\nckuEEoralpage
+% 產生口試委員簽名單(en)
+%\nckuEEenoralpage
+
+%\newpage
+%\setcounter{page}{1}
+%\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       封面內頁
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % unmark to add inner cover
+%\newpage
+%\thispagestyle{empty}
+%\thispagestyle{EmptyWaterMarkPage}
+%\nckuEEtitlepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       中文摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 可以利用如下自定義的command (定義在nckuee.sty)
+% ======
+%\begin{zhAbstract}  %中文摘要
+%\input{frontpages/front_cabstract.tex} % // 可以引入front_cabstract.tex檔案或在此編輯 // cbj
+%\end{zhAbstract}
+
+% ...等
+% ======
+
+% 在此直接定義如下
+%%%%%%%%%%%%%%%%
+%
+\newpage
+% // HongJhe 頁碼起始
+\setcounter{page}{1}
+\pagenumbering{roman}
+% create an entry in table of contents for 中文摘要
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{\nameCabstract}
+% aligned to the center of the page
+\begin{center}
+% font size (relative to 12 pt):
+% \large (14pt) < \Large (18pt) < \LARGE (20pt) < \huge (24pt)< \Huge (24 pt)
+% Set the line spacing to single for the names (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+% it needs a font size changing command to be effective
+\LARGE{\zhTitle}\\  %中文題目
+\vspace{0.83cm}
+% \makebox is a text box with specified width;
+% option s: stretch
+% use \makebox to make sure
+% each text field occupies the same width
+%\makebox[1.5cm][c]{\large{學生：}}
+\hspace{0.5in}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\makebox[3.5cm][l]{\large{\authorZhName\footnote[1]{}}}\footnotetext[1]{{學生}} % 學生中文姓名
+%\hfill
+%
+%\makebox[3cm][c]{\large{指導教授：}}
+\makebox[3.5cm][l]{\large{\advisorZhName\footnote[2]{}}}\footnotetext[2]{{指導教授}} \\ %指導教授中文姓名
+%
+\vspace{0.42cm}
+%
+\large{\zhUniv}\large{\zhDepartmentName}\\ %校名系所名
+\vspace{0.83cm}
+%\vfill
+\makebox[2.7cm][c]{\large{摘要}}
+\end{center}
+% Resume the line spacing to the desired setting
+\renewcommand{\baselinestretch}{\mybaselinestretch}   %恢復原設定
+%it needs a font size changing command to be effective
+% restore the font size to normal
+\normalsize
+%%%%%%%%%%%%%
+\par  % 摘要首段空格 by SianJhe
+\input{frontpages/front_cabstract.tex} % // 可以引入front_eabstract.tex檔案或在此編輯 // cbj
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       英文摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%[method 1]
+
+% 可以利用如下自定義的command (定義在nckuee.sty)
+% ======
+%\begin{enAbstract}  %英文摘要
+%\input{frontpages/front_eabstract.tex} % // 可以引入front_eabstract.tex檔案或在此編輯 // cbj
+%\end{enAbstract}
+
+%[method 2]
+\newpage
+% create an entry in table of contents for 英文摘要
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{\nameEabstract} % // HongJhe marked
+
+% aligned to the center of the page
+\begin{center}
+% font size:
+% \large (14pt) < \Large (18pt) < \LARGE (20pt) < \huge (24pt)< \Huge (24 pt)
+% Set the line spacing to single for the names (to compress the lines)
+\renewcommand{\baselinestretch}{1}   %行距 1 倍
+%\large % it needs a font size changing command to be effective
+\LARGE{\enTitle}\\  %英文題目
+\vspace{0.83cm}
+% \makebox is a text box with specified width;
+% option s: stretch
+% use \makebox to make sure
+% each text field occupies the same width
+%\makebox[2cm][s]{\large{Student: }}
+\hspace{0.45in}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\makebox[5cm][l]{\large{\authorEnName\footnote[1]{}}}\footnotetext[1]{{Student}} % 學生英文姓名
+%\hfill
+%
+%\makebox[2cm][s]{\large{Advisor: }}
+\makebox[5cm][l]{\large{\advisorEnName\footnote[2]{}}}\footnotetext[2]{{Advisor}} \\ %教授英文姓名
+%
+\vspace{0.42cm}
+\large{\enDepartmentName}\\ %英文系所全名
+%
+\large{\enUniv}\\  %英文校名
+\vspace{0.83cm}
+%\vfill
+%
+\large{\nameEabstractc}\\
+%\vspace{0.5cm}
+\end{center}
+
+% Resume the line spacing the desired setting
+\renewcommand{\baselinestretch}{\mybaselinestretch}   %恢復原設定
+%\large %it needs a font size changing command to be effective
+% restore the font size to normal
+\normalsize
+%%%%%%%%%%%%%
+\input{frontpages/front_eabstract.tex} % // 可以引入front_eabstract.tex檔案或在此編輯 // cbj
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       誌謝
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Acknowledgment
+\newpage
+\phantomsection % for hyperref to register this
+%\addcontentsline{toc}{chapter}{\nameAcknc}
+
+\begin{zhAckn}  %誌謝
+\input{frontpages/front_ackn} % // 可以引入front_ackn.tex檔案或在此編輯 // cbj
+\end{zhAckn}
+
+%\chapter*{\nameAckn} %\makebox{} is fragile; need protect
+%\input{frontpages/front_ackn} % // 可以引入my_ackn.tex檔案或在此編輯 // cbj
+%%testjsjtoejiojsoijtoijos
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       目錄
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Table of contents
+\newpage
+\renewcommand{\contentsname}{\nameToc}
+%\makebox{} is fragile; need protect
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{\nameTocc}
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       表目錄
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% List of Tables
+\newpage
+\renewcommand{\listtablename}{\nameLot}
+%\makebox{} is fragile; need protect
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{\nameLotc}
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       圖目錄
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% List of Figures
+\newpage
+\renewcommand{\listfigurename}{\nameTof}
+%\makebox{} is fragile; need protect
+\phantomsection % for hyperref to register this
+\addcontentsline{toc}{chapter}{\nameTofc}
+\listoffigures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       符號說明
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Symbol list
+% define new environment, based on standard description environment
+% adapted from p.60~64, <<The LaTeX Companion>>, 1994, ISBN 0-201-54199-8
+
+%\newcommand{\SymEntryLabel}[1]%
+%  {\makebox[3cm][l]{#1}}
+%%
+%\newenvironment{SymEntry}
+%   {\begin{list}{}%
+%       {\renewcommand{\makelabel}{\SymEntryLabel}%
+%        \setlength{\labelwidth}{3cm}%
+%        \setlength{\leftmargin}{\labelwidth}%
+%        }%
+%   }%
+%   {\end{list}}
+%%%
+%\newpage
+%\chapter*{\nameSlist} %\makebox{} is fragile; need protect
+%\phantomsection % for hyperref to register this
+%\addcontentsline{toc}{chapter}{\nameSlistc}
+%\input{frontpages/front_symbols.tex}
+
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
