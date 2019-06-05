@@ -21,7 +21,6 @@
     * 放置主要的 sections/chapters 的內容，提供 `body/main.tex` 來呼叫使用。
     * `main.tex`:               有別於外層的 main.tex，這邊主要是管理所有的章節順序，將其他位於 `body/` 下的 `.tex` 引入做使用， 並且定義各章節的 index。
     * 可以依據個人需要來調整章節的順序以及使用。
-    * `example/`:               放了實驗室學長的作品以供格式參考使用。
 * class
     * `ncku_class.cls`:         自定義文檔的 class，在 main.tex 引入 (作為 documentclass 引入)。
     * `ncku_style.sty`:         自定義的 package，在 main.tex 引入， 主要的姓名、標題等等訊息都在這邊，適當更改後做使用。 (之後便引用這邊的定義，來將對應的字串套入到需要的空格中)
