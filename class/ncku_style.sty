@@ -123,6 +123,74 @@
 \end{titlepage}
 }
 
+% // 封面頁 (浮水印) 設定 //
+% % % % % % % % % % % % % %
+\newcommand{\nckuEEwatermarktitlepage}{
+\begin{titlepage}%
+\begin{center}
+	\thispagestyle{EmptyWaterMarkPage}
+%	\myonehalfspacing
+\vspace{2cm}
+\zhKaiFont
+\centering
+	{
+%         \Large
+ 		\fontsize{24}{16}\selectfont
+		\bfseries
+%		\begin{CJKfilltwosides}{15.5cm}
+%		\zhUniv{} \\
+%		\zhDepartmentName{} \\
+%		\zhThesisType{} 論文 \\
+%		\end{CJKfilltwosides}
+% 		{國\hfill 立\hfill 成\hfill 功\hfill 大\hfill 學}\\
+% 		{資\hfill 訊\hfill 工\hfill 程\hfill 研\hfill 究\hfill 所}\\
+% 		{碩\hfill 士\hfill 論\hfill 文}\\
+		{國 立 成 功 大 學}\\
+		{資 訊 工 程 研 究 所}\\
+		{碩 士 論 文}\\
+   %     {(初 稿)}\\
+	}
+
+%		\centering
+%		{%\Large
+%		\fontsize{24}{20}\selectfont
+%		%\bfseries
+%		\zhDraftName
+%		}
+		\vspace{2em}
+		\vfill
+%		\vspace{1em}\vfill
+		{\par%\vfill	
+%			{\fontsize{24}{16}\selectfont\bfseries \begin{CJKfilltwosides}{15cm}\zhTitle\end{CJKfilltwosides} \\} % // 論文題目
+			{\fontsize{24}{16}\selectfont\bfseries \zhTitle \\} % // 論文題目 // cbj
+%			\myonehalfspacing
+			\vspace{0.5cm}
+%			\vfill
+            {\fontsize{20}{16}\selectfont\bfseries \enTitle \\} % // Thesis Title // cbj
+		\vfill
+		%\myonehalfspacing
+		{\fontsize{18}{14}\selectfont
+					研 究 生\hspace{2pt}：\authorZhName{} \hspace{2em} Student : \authorEnName \\
+					指導教授：\advisorZhName{} \hspace{2em} \hspace{1pt}Advisor : \advisorEnName \\
+%					\vspace{2em}
+		}
+		{%\large
+		\vfill
+		\fontsize{18pt}{12pt}\selectfont
+		\enDepartmentName{}, \\
+		%\enCollegeName{}
+		\enUniv, \\
+		\enCity \\
+		Thesis for Master of Science Degree \\ \enMonth , \enYear \\}
+		\vfill
+%		\vspace{2em}
+		\fontsize{24pt}{20pt}\selectfont	
+		中華民國\rocYear 年\zhMonth 月
+		}\par
+	\end{center}
+\end{titlepage}
+}
+
 % % % % % % % % % % % % % %
 % // 中文摘要設定 // cbj
 % % % % % % % % % % % % % %
